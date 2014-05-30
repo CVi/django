@@ -514,6 +514,8 @@ def reverse(viewname, urlconf=None, args=None, kwargs=None, prefix=None, current
         view = viewname
     else:
         parts = viewname.split(':')
+        if parts[0] == '' and current_app:
+            parts[0] = current_app
         parts.reverse()
         view = parts[0]
         path = parts[1:]
